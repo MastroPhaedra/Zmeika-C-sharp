@@ -9,8 +9,6 @@ namespace Zmeika_C_sharp
 {
     public class Game
     {
-        // FPS = SPEED
-        public int FPS = 24; //Game Curent FPS=***;
         public int Width { get; set; }
         public int Height { get; set; }
         public Snake Snake { get; set; }
@@ -22,7 +20,7 @@ namespace Zmeika_C_sharp
         public Food Food { get; set;}
         //Params settings = new Params();
         public Sounds main_sound=new Sounds("путь и название файла");
-        main_sound.Play();
+        //main_sound.Play();
         public Game(int width, int height)
         {
             Current=this;
@@ -59,8 +57,7 @@ namespace Zmeika_C_sharp
             Food.Draw();
             //
             //Snake.Draw();
-            new Speed(Snake.count,FPS);
-            Thread.Sleep(1000 / FPS);
+            Thread.Sleep(1000 / Speed.FPS);
         }
         public void CheckCollisions()
         {
@@ -81,6 +78,7 @@ namespace Zmeika_C_sharp
                 if (key == ConsoleKey.R)
                 {
                     Console.Clear();
+                    Snake.count = 0;
                     IsGameOver = false;
                     Snake = new Snake(5, Height / 2);
                     Food = new Food();

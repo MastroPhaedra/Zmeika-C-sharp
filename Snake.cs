@@ -8,7 +8,7 @@ namespace Zmeika_C_sharp
 {
     public class Snake
     {
-        public int count = 0;
+        public static int count = 0;
         private const char HeadSymbol = '#';
         private const char BodySymbol = '+';
 

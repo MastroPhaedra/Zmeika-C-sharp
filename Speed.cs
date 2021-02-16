@@ -8,33 +8,35 @@ namespace Zmeika_C_sharp
 {
     public class Speed
     {
-        public Speed(int count, int FPS)
+        // FPS = SPEED
+        public static int FPS = 24; //Game Curent FPS=***;
+        public Speed()
         {
-            if (count<=10)
-            {
-                FPS = 24;
-                //Thread.Sleep(1000 / FPS);
-            }
-            else if (count >= 11 && count <= 20)
+            if (Snake.count<=10)
             {
                 FPS = 26;
+                //Thread.Sleep(1000 / FPS);
             }
-            else if (count >= 21 && count <= 30)
-            {
-                FPS = 28;
-            }
-            else if (count >= 31 && count <= 40)
-            {
-                FPS = 30;
-            }
-            else if (count >= 41 && count <= 50)
+            else if (Snake.count >= 11 && Snake.count <= 30)
             {
                 FPS = 35;
             }
-            else if (count >= 51)
+            else if (Snake.count >= 31 && Snake.count <= 50)
             {
-                FPS++;
+                FPS = 50;
             }
+            else if (Snake.count >= 51 && Snake.count <= 70)
+            {
+                FPS = 60;
+            }
+            else if (Snake.count >= 71 && Snake.count <= 90)
+            {
+                FPS = 70;
+            }
+            //else if (Snake.count >= 11)
+            //{
+            //    FPS++; //- ни в коем случае нельзя ставить, иначе змейка летает
+            //}
         }
     }
 }
