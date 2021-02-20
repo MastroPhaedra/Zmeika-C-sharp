@@ -23,15 +23,15 @@ namespace Zmeika_C_sharp
         public void PlayEat()
         {
             player.URL = pathToMedia + "nom_nom.mp3";
-            player.settings.volume = 50;
+            player.settings.volume = 35;
             player.controls.play();
         }
 
-        public void Pause()
-        {
-            player.URL = pathToMedia + "Background_Royalty_Free_Music.mp3";
-            player.controls.stop();
-        }
+        //public void Pause()
+        //{
+        //    player.URL = pathToMedia + "Background_Royalty_Free_Music.mp3";
+        //    player.controls.stop();
+        //}
 
         public void GameEnd()
         {
