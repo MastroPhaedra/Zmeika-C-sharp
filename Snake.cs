@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Zmeika_C_sharp
@@ -50,6 +51,14 @@ namespace Zmeika_C_sharp
                 {
                     MoveDirection = MoveDirection.RIGHT;
                 }
+                else if (key == ConsoleKey.P) // ПАУЗА
+                {
+                    Console.SetCursorPosition(00,00);
+                    Console.WriteLine("\n    Press any key (but not 'P') to resume");
+                    while (!Console.KeyAvailable) //Console.KeyAvailable == false (то же самое)
+                        Thread.Sleep(250); // Loop until input is entered.
+                    Console.Clear();
+                }
             }
         }
 
@@ -79,6 +88,17 @@ namespace Zmeika_C_sharp
             Body.Add(new BodyPart(BodySymbol, lastBody.PosX, lastBody.PosY));
             count++;
         }
+        //public void Pause()
+        //{
+        //    if (Console.KeyAvailable)
+        //    {
+        //        var key = Console.ReadKey(true).Key;
+        //        if (key == ConsoleKey.P)
+        //        {
+        //            Thread.Sleep(1500000000);
+        //        }
+        //    }
+        //}
         //public void Draw()
         //{
         //    Head.Draw();

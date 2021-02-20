@@ -71,9 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Music2\Background_Royalty Free Music.mp3" />
-    <Content Include="Music2\death_sound_effect.mp3" />
-    <Content Include="Music2\nom_nom.mp3" />
+    <Content Include="Music\Background_Royalty_Free_Music.mp3" />
+    <Content Include="Music\death_sound_effect.mp3" />
+    <Content Include="Music\nom_nom.mp3" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

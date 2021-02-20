@@ -1,41 +1,43 @@
-﻿using System;
-using System.IO;
-using WMPLib;
+﻿using WMPLib;
 
-//namespace Snake
-//{
-public class Sounds
+namespace Zmeika_C_sharp
 {
-    // Media player
-    WindowsMediaPlayer player = new WindowsMediaPlayer();
-    private string pathToMedia;
-
-    public Sounds(string pathToResources)
+    public class Sounds
     {
-        pathToMedia = pathToResources;
-    }
+        WindowsMediaPlayer player = new WindowsMediaPlayer();
+        private string pathToMedia;
 
-    public void Play()
-    {
-        player.URL = "Background_Royalty Free Music.mp3";
-        player.settings.volume = 100;
-        player.controls.play();
-        player.settings.setMode("loop", true); // loop mode
+        public Sounds(string pathToResources)
+        {
+            pathToMedia = pathToResources;
+        }
 
-    }
+        public void Play()
+        {
+            player.URL = pathToMedia + "Background_Royalty_Free_Music.mp3";
+            player.settings.volume = 5;
+            player.controls.play();
+            player.settings.setMode("loop", true);
+        }
 
-    public void Play2(string songName)
-    {
-        player.URL = pathToMedia + songName + ".mp3";
-        player.settings.volume = 100;
-        player.controls.play();
-    }
+        public void PlayEat()
+        {
+            player.URL = pathToMedia + "nom_nom.mp3";
+            player.settings.volume = 50;
+            player.controls.play();
+        }
 
-    public void PlayEat()
-    {
-        player.URL = pathToMedia + "click.mp3";
-        player.settings.volume = 100;
-        player.controls.play();
+        public void Pause()
+        {
+            player.URL = pathToMedia + "Background_Royalty_Free_Music.mp3";
+            player.controls.stop();
+        }
+
+        public void GameEnd()
+        {
+            player.URL = pathToMedia + "death_sound_effect.mp3";
+            player.settings.volume = 50;
+            player.controls.play();
+        }
     }
 }
-//}

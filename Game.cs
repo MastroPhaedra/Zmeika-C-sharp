@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WMPLib;
 
 namespace Zmeika_C_sharp
 {
     public class Game
     {
+        Params settings = new Params();
         public int Width { get; set; }
         public int Height { get; set; }
         public Snake Snake { get; set; }
@@ -18,24 +20,25 @@ namespace Zmeika_C_sharp
         //
         public bool IsGameOver { get; set; }
         public Food Food { get; set;}
-        //Params settings = new Params();
-        public Sounds main_sound=new Sounds("путь и название файла");
-        //main_sound.Play();
+        public Speed Speed;
         public Game(int width, int height)
         {
             Current=this;
             Width = width;
             Height = height;
+
             Score_max_amount = (Width * Height) - 3; //максимальное кол-во очков в поле
 
             Console.CursorVisible = false;
             Console.SetWindowSize(Width, Height);
+
         }
         public void Start()
         {
             Snake = new Snake(5, Height / 2);
             Food = new Food();
-            // тут должна стоять основная задняя тема музыки
+            Sounds main_sound = new Sounds(settings.GetResourcesFolder());
+            main_sound.Play();
 
             while (true)
             {
@@ -56,18 +59,21 @@ namespace Zmeika_C_sharp
             //
             Food.Draw();
             //
-            //Snake.Draw();
-            Thread.Sleep(1000 / Speed.FPS);
+            Speed = new Speed();
         }
         public void CheckCollisions()
         {
             if (Snake.Head.PosX == Food.PosX && Snake.Head.PosY == Food.PosY)
             {
+                Sounds eat_sound = new Sounds(settings.GetResourcesFolder());
+                eat_sound.PlayEat();
                 Snake.Grow();
                 Food = new Food();
             }
             if (Snake.Body.Any(body => Snake.Head.PosX == body.PosX && Snake.Head.PosY == body.PosY)|| (Snake.count >= Score_max_amount))
             {
+                Sounds dead_sound = new Sounds(settings.GetResourcesFolder());
+                dead_sound.GameEnd();
                 IsGameOver = true;
                 GameOverText.Draw(Width, Height, Snake.count);
                 var key = ConsoleKey.Enter;
@@ -82,6 +88,8 @@ namespace Zmeika_C_sharp
                     IsGameOver = false;
                     Snake = new Snake(5, Height / 2);
                     Food = new Food();
+                    //Sounds main_sound = new Sounds(settings.GetResourcesFolder());
+                    //main_sound.Play();
                 }
                 else if (key == ConsoleKey.Escape)
                 {
