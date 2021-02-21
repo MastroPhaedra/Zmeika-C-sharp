@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using WMPLib;
 
 namespace Zmeika_C_sharp
 {
@@ -88,8 +83,6 @@ namespace Zmeika_C_sharp
                     IsGameOver = false;
                     Snake = new Snake(5, Height / 2);
                     Food = new Food();
-                    //Sounds main_sound = new Sounds(settings.GetResourcesFolder());
-                    //main_sound.Play();
                 }
                 else if (key == ConsoleKey.Escape)
                 {

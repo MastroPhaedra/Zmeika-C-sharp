@@ -13,7 +13,7 @@ namespace Zmeika_C_sharp
 
             string binFolder =
                 Directory.GetCurrentDirectory().ToString().Substring(0, ind)
-                    .ToString(); // путь до указанной в инкесе папки
+                    .ToString(); // путь до указанной в индексе папки
 
             ResourcesFolder = binFolder + "Music\\";
         }
